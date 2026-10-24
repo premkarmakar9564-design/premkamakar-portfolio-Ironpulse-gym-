@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IronPulse Fitness Studio – Garia, Kolkata</title>
+<meta name="description" content="IronPulse Fitness Studio in Garia, Kolkata. Strength training, cardio, personal training & group fitness. Memberships from ₹999/month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #111111;
+    --charcoal: #1A1A1A;
+    --dark: #242424;
+    --amber: #F5A623;
+    --amber-dark: #D4911A;
+    --steel: #6B6B6B;
+    --light-bg: #F7F5F0;
+    --white: #FFFFFF;
+    --border: #2E2E2E;
+    --text-muted: #9A9A9A;
+
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; scroll-padding-top: calc(64px + env(safe-area-inset-top, 0px)); }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--white);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* TYPOGRAPHY */
+  .display {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+  }
+  .heading {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    line-height: 1.05;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    left: 0; right: 0;
+    z-index: 100;
+    background: rgba(17,17,17,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--amber); }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--amber);
+    color: var(--black) !important;
+    font-weight: 600 !important;
+    padding: 9px 20px;
+    border-radius: 4px;
+    font-size: 14px !important;
+    color: var(--black);
+  }
+  .nav-cta:hover { background: var(--amber-dark) !important; color: var(--black) !important; }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: calc(64px + env(safe-area-inset-top, 0px));
+    left: 0; right: 0;
+    background: var(--black);
+    border-bottom: 1px solid var(--border);
+    padding: 24px;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 99;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    display: block;
+    padding: 12px 0;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu a:last-child { border-bottom: none; color: var(--amber); font-weight: 600; }
+
+  /* HERO */
+  #hero {
+    background: var(--black);
+    padding-top: calc(64px + env(safe-area-inset-top, 0px));
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(245,166,35,0.07) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.6) 100%);
+  }
+  /* Animated lines */
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0.04;
+  }
+  .hero-lines::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 30%;
+    width: 1px;
+    height: 200%;
+    background: var(--amber);
+    transform: rotate(12deg);
+  }
+  .hero-lines::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 45%;
+    width: 1px;
+    height: 200%;
+    background: var(--amber);
+    transform: rotate(12deg);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-left: 3px solid var(--amber);
+    padding-left: 12px;
+  }
+  .hero-headline {
+    font-size: clamp(64px, 10vw, 120px);
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .hero-headline .line2 { color: var(--amber); }
+  .hero-sub {
+    font-size: clamp(18px, 3vw, 26px);
+    color: var(--text-muted);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    margin-bottom: 32px;
+    max-width: 520px;
+  }
+  .hero-body {
+    font-size: 16px;
+    color: #888;
+    max-width: 440px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .btn-primary {
+    background: var(--amber);
+    color: var(--black);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--amber-dark); }
+  .btn-ghost {
+    color: var(--white);
+    font-weight: 500;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid #444;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--white); }
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    color: var(--white);
+    line-height: 1;
+  }
+  .stat-num span { color: var(--amber); }
+  .stat-label {
+    font-size: 13px;
+    color: var(--steel);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 80px 0; }
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 14px;
+    border-left: 2px solid var(--amber);
+    padding-left: 10px;
+  }
+  .section-title {
+    font-size: clamp(36px, 5vw, 56px);
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+  .section-intro {
+    font-size: 16px;
+    color: var(--steel);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* SERVICES */
+  #services { background: var(--light-bg); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2px;
+    margin-top: 48px;
+    border: 2px solid var(--charcoal);
+  }
+  .service-item {
+    background: var(--white);
+    padding: 32px 28px;
+    border: 1px solid #E5E3DF;
+    transition: background 0.2s;
+  }
+  .service-item:hover { background: var(--charcoal); }
+  .service-item:hover .service-name { color: var(--amber); }
+  .service-item:hover .service-desc { color: #AAA; }
+  .service-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  .service-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+  .service-desc {
+    font-size: 14px;
+    color: var(--steel);
+    line-height: 1.6;
+    transition: color 0.2s;
+  }
+
+  /* MEMBERSHIP */
+  #membership {
+    background: var(--charcoal);
+    width: 100%;
+    max-width: 100%;
+  }
+  #membership .section-title { color: var(--white); }
+  #membership .section-intro { color: var(--text-muted); }
+  .plans-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 48px;
+  }
+  .plans-table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    font-size: 15px;
+    table-layout: fixed;
+  }
+  .plans-table colgroup col:nth-child(1) { width: 32%; }
+  .plans-table colgroup col:nth-child(2) { width: 18%; }
+  .plans-table colgroup col:nth-child(3) { width: 20%; }
+  .plans-table colgroup col:nth-child(4) { width: 30%; }
+  .plans-table thead th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--steel);
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    word-break: keep-all;
+    white-space: nowrap;
+  }
+  .plans-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .plans-table tbody tr:hover { background: rgba(245,166,35,0.05); }
+  .plans-table tbody td {
+    padding: 18px 16px;
+    color: #CCC;
+    vertical-align: top;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  .plans-table .plan-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--white);
+    display: block;
+  }
+  .plans-table .plan-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--amber);
+    white-space: nowrap;
+  }
+  .plans-table .badge {
+    display: inline-block;
+    background: var(--amber);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+  }
+  .table-cta {
+    margin-top: 32px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* FACILITIES */
+  #facilities { background: var(--white); }
+  .facilities-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-top: 48px;
+    align-items: start;
+  }
+  .facility-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .facility-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid #EEEBE6;
+  }
+  .facility-item:first-child { border-top: 1px solid #EEEBE6; }
+  .facility-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .facility-name {
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--charcoal);
+  }
+  .hours-block {
+    background: var(--charcoal);
+    padding: 40px;
+    border-radius: 4px;
+  }
+  .hours-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .hours-row:last-child { border-bottom: none; }
+  .hours-day { color: var(--text-muted); font-weight: 500; }
+  .hours-time { color: var(--amber); font-weight: 600; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; }
+  .payment-methods {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .payment-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 12px;
+  }
+  .payment-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .payment-tag {
+    background: var(--dark);
+    color: #CCC;
+    font-size: 13px;
+    padding: 5px 12px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  /* ABOUT */
+  #about { background: var(--light-bg); }
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-top: 48px;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: 16px;
+    color: #4A4A4A;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    max-width: 440px;
+  }
+  .owner-card {
+    background: var(--charcoal);
+    color: var(--white);
+    padding: 40px;
+    border-radius: 4px;
+  }
+  .owner-initials {
+    width: 56px;
+    height: 56px;
+    background: var(--amber);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--black);
+    margin-bottom: 20px;
+  }
+  .owner-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .owner-role {
+    font-size: 13px;
+    color: var(--steel);
+    margin-bottom: 20px;
+  }
+  .owner-quote {
+    font-size: 15px;
+    color: #AAA;
+    line-height: 1.7;
+    font-style: italic;
+    border-left: 3px solid var(--amber);
+    padding-left: 16px;
+  }
+  .target-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .target-tag {
+    border: 1px solid #444;
+    color: #AAA;
+    font-size: 13px;
+    padding: 5px 12px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--charcoal); }
+  #contact .section-title { color: var(--white); }
+  #contact .section-intro { color: var(--text-muted); }
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-top: 48px;
+    align-items: start;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 0; }
+  .contact-row {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-row:first-child { border-top: 1px solid var(--border); }
+  .contact-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .contact-label { font-size: 12px; color: var(--steel); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .contact-val { font-size: 15px; color: #DDD; }
+  .contact-val a { color: var(--amber); text-decoration: none; }
+  .contact-val a:hover { text-decoration: underline; }
+  .inquiry-form { background: var(--dark); padding: 40px; border-radius: 4px; }
+  .form-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--steel); margin-bottom: 8px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    background: var(--border);
+    border: 1px solid #3A3A3A;
+    color: var(--white);
+    padding: 12px 14px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--amber); }
+  .form-group select option { background: var(--charcoal); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-submit {
+    width: 100%;
+    background: var(--amber);
+    color: var(--black);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--amber-dark); }
+  .form-note { font-size: 12px; color: var(--steel); margin-top: 10px; text-align: center; }
+  .form-success {
+    display: none;
+    background: rgba(245,166,35,0.1);
+    border: 1px solid var(--amber);
+    color: var(--amber);
+    padding: 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--amber); }
+  .footer-copy { font-size: 13px; color: var(--steel); }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: var(--steel); text-decoration: none; }
+  .footer-links a:hover { color: var(--white); }
+
+  /* WHATSAPP FLOAT */
+  .whatsapp-float {
+    position: fixed;
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    right: 24px;
+    background: #25D366;
+    color: white;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 26px;
+    z-index: 98;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .whatsapp-float:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(37,211,102,0.45); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    section { padding: 60px 0; }
+
+    .hero-headline { font-size: 58px; }
+    .hero-stats { gap: 28px; }
+    .stat-num { font-size: 32px; }
+
+    .services-grid { grid-template-columns: 1fr; }
+
+    .plans-table { font-size: 14px; }
+    .plans-table thead th { padding: 10px 14px; }
+    .plans-table tbody td { padding: 16px 14px; }
+    .plans-table .plan-name { font-size: 17px; }
+
+    .facilities-layout,
+    .about-layout,
+    .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+
+    .hours-block, .owner-card, .inquiry-form { padding: 28px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-headline { font-size: 46px; }
+    .hero-sub { font-size: 18px; }
+    .hero-stats { flex-direction: row; }
+    .stat-num { font-size: 28px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Iron<span>Pulse</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#membership">Membership</a></li>
+      <li><a href="#facilities">Facilities</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#membership" onclick="closeMenu()">Membership</a>
+  <a href="#facilities" onclick="closeMenu()">Facilities</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#contact" onclick="closeMenu()">Get Started →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="container hero-content">
+    <div class="hero-eyebrow">Garia, Kolkata · Est. IronPulse</div>
+    <h1 class="display hero-headline">
+      TRAIN<br><span class="line2">HARDER.</span><br>GET STRONGER.
+    </h1>
+    <p class="hero-sub">Modern fitness. Real results. Your neighbourhood gym.</p>
+    <p class="hero-body">Strength training, personal coaching, and group fitness — built for beginners and serious athletes alike. Memberships starting at ₹999/month.</p>
+    <div class="hero-actions">
+      <a href="#membership" class="btn-primary">View Memberships</a>
+      <a href="tel:+919000012345" class="btn-ghost">📞 Call Now</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">7<span>+</span></div>
+        <div class="stat-label">Programs Available</div>
+      </div>
+      <div>
+        <div class="stat-num">6 <span style="font-size:20px;color:#555;">days/wk</span></div>
+        <div class="stat-label">Open Mon–Sat</div>
+      </div>
+      <div>
+        <div class="stat-num">₹999<span>/mo</span></div>
+        <div class="stat-label">Starting Membership</div>
+      </div>
+      <div>
+        <div class="stat-num">16<span>hrs</span></div>
+        <div class="stat-label">Daily Access</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">What We Offer</div>
+    <h2 class="heading section-title">Built For Every Goal</h2>
+    <p class="section-intro">Whether you're just starting out or chasing a personal record, IronPulse has a program for you.</p>
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-icon">🏋️</div>
+        <div class="service-name">Strength Training</div>
+        <div class="service-desc">Free weights, barbells, and machines. Build muscle and improve overall body composition with guided programming.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🏃</div>
+        <div class="service-name">Cardio Training</div>
+        <div class="service-desc">Treadmills, exercise bikes, and endurance programs. Boost your stamina and burn calories effectively.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">👤</div>
+        <div class="service-name">Personal Training</div>
+        <div class="service-desc">One-on-one sessions tailored to your goals. Get a dedicated trainer, a custom plan, and direct accountability.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">⚡</div>
+        <div class="service-name">Functional Fitness</div>
+        <div class="service-desc">Movement-based training that improves your strength, mobility, and performance for everyday life and sport.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🔥</div>
+        <div class="service-name">Weight Loss Program</div>
+        <div class="service-desc">Structured fat-loss training combining cardio and resistance work, designed to deliver visible, lasting results.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">💪</div>
+        <div class="service-name">Group Fitness</div>
+        <div class="service-desc">High-energy group sessions that keep you motivated, accountable, and consistent — train alongside your community.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section id="membership">
+  <div class="container">
+    <div class="section-label" style="color:var(--amber)">Pricing</div>
+    <h2 class="heading section-title">Simple, Flexible Plans</h2>
+    <p class="section-intro">No hidden fees. Pick the plan that fits your schedule and commitment.</p>
+    <div class="plans-table-wrap">
+    <table class="plans-table">
+      <colgroup>
+        <col><col><col><col>
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Plan</th>
+          <th>Duration</th>
+          <th>Price</th>
+          <th>Best For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="plan-name">Basic</span></td>
+          <td>Monthly</td>
+          <td><span class="plan-price">₹999</span></td>
+          <td>Try it out, no commitment</td>
+        </tr>
+        <tr>
+          <td><span class="plan-name">Standard</span></td>
+          <td>3 Months</td>
+          <td><span class="plan-price">₹2,699</span></td>
+          <td>Building a steady routine</td>
+        </tr>
+        <tr>
+          <td><span class="plan-name">Premium</span><span class="badge">Popular</span></td>
+          <td>6 Months</td>
+          <td><span class="plan-price">₹4,999</span></td>
+          <td>Serious about results</td>
+        </tr>
+        <tr>
+          <td><span class="plan-name">Annual</span><span class="badge">Best Value</span></td>
+          <td>12 Months</td>
+          <td><span class="plan-price">₹8,999</span></td>
+          <td>Maximum savings, full commitment</td>
+        </tr>
+        <tr>
+          <td><span class="plan-name">Personal Training</span></td>
+          <td>Monthly</td>
+          <td><span class="plan-price">₹3,999</span></td>
+          <td>1-on-1 coaching & custom plan</td>
+        </tr>
+        <tr>
+          <td><span class="plan-name">Cardio Training</span></td>
+          <td>Monthly</td>
+          <td><span class="plan-price">₹999</span></td>
+          <td>Cardio-focused, weight loss</td>
+        </tr>
+        <tr>
+          <td><span class="plan-name">Group Fitness</span></td>
+          <td>Monthly</td>
+          <td><span class="plan-price">₹1,799</span></td>
+          <td>Community sessions, all levels</td>
+        </tr>
+      </tbody>
+    </table>
+    </div><!-- /.plans-table-wrap -->
+    <div class="table-cta">
+      <a href="#contact" class="btn-primary">Enquire About Membership</a>
+      <a href="tel:+919000012345" class="btn-ghost" style="color:var(--white);border-color:#444">Call +91 90000 12345</a>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES & HOURS -->
+<section id="facilities">
+  <div class="container">
+    <div class="section-label">Inside the Gym</div>
+    <h2 class="heading section-title">What You'll Find Here</h2>
+    <div class="facilities-layout">
+      <div class="facility-list">
+        <div class="facility-item"><div class="facility-dot"></div><div class="facility-name">Free Weights & Dumbbells</div></div>
+        <div class="facility-item"><div class="facility-dot"></div><div class="facility-name">Barbells & Olympic Plates</div></div>
+        <div class="facility-item"><div class="facility-dot"></div><div class="facility-name">Weight & Resistance Machines</div></div>
+        <div class="facility-item"><div class="facility-dot"></div><div class="facility-name">Treadmills</div></div>
+        <div class="facility-item"><div class="facility-dot"></div><div class="facility-name">Exercise Bikes</div></div>
+        <div class="facility-item"><div class="facility-dot"></div><div class="facility-name">Personal Training Area</div></div>
+        <div class="facility-item"><div class="facility-dot"></div><div class="facility-name">Changing Rooms</div></div>
+        <div class="facility-item"><div class="facility-dot"></div><div class="facility-name">Drinking Water Available</div></div>
+      </div>
+      <div>
+        <div class="hours-block">
+          <div class="hours-title">Opening Hours</div>
+          <div class="hours-row">
+            <span class="hours-day">Monday – Saturday</span>
+            <span class="hours-time">6:00 AM – 10:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sunday</span>
+            <span class="hours-time">7:00 AM – 12:00 PM</span>
+          </div>
+          <div class="payment-methods">
+            <div class="payment-title">Payment Methods</div>
+            <div class="payment-tags">
+              <span class="payment-tag">UPI</span>
+              <span class="payment-tag">Cash</span>
+              <span class="payment-tag">Debit Card</span>
+              <span class="payment-tag">Credit Card</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">Our Story</div>
+    <h2 class="heading section-title">A Gym Built For This Neighbourhood</h2>
+    <div class="about-layout">
+      <div class="about-text">
+        <p>IronPulse Fitness Studio was built for the people of Garia — not for Instagram, not for corporate memberships. We wanted a gym that students, working professionals, and first-time gym-goers could walk into and feel like they belong.</p>
+        <p>We've equipped the studio with everything you need to train well: a full free weights area, quality machines, cardio equipment, and dedicated space for personal training. No gimmicks — just a serious, welcoming environment where results happen.</p>
+        <p>Whether you're here to drop weight, build strength, or simply stay active, we'll meet you where you are and help you go further.</p>
+        <div class="target-tags">
+          <span class="target-tag">Students</span>
+          <span class="target-tag">Working Professionals</span>
+          <span class="target-tag">Beginners</span>
+          <span class="target-tag">Weight Loss</span>
+          <span class="target-tag">Muscle Building</span>
+          <span class="target-tag">Fitness Enthusiasts</span>
+        </div>
+      </div>
+      <div class="owner-card">
+        <div class="owner-initials">AS</div>
+        <div class="owner-name">Arjun Sen</div>
+        <div class="owner-role">Founder & Head Trainer, IronPulse Fitness Studio</div>
+        <div class="owner-quote">
+          "I started IronPulse because I wanted Garia to have a gym that didn't make people feel like outsiders. Every person who walks through that door deserves professional guidance, good equipment, and a community that pulls them forward."
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label" style="color:var(--amber)">Get In Touch</div>
+    <h2 class="heading section-title">Start Your Fitness Journey</h2>
+    <p class="section-intro">Drop in, call us, or send a message. We'll help you choose the right plan and get you started.</p>
+    <div class="contact-layout">
+      <div class="contact-info">
+        <div class="contact-row">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Address</div>
+            <div class="contact-val">24/A, Lake View Road, Garia<br>Kolkata, West Bengal 700084</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-val"><a href="tel:+919000012345">+91 90000 12345</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-val"><a href="https://wa.me/919000012345?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20IronPulse%20membership" target="_blank" rel="noopener">Message on WhatsApp</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val"><a href="mailto:info@ironpulse-demo.example.com">info@ironpulse-demo.example.com</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-label">Hours</div>
+            <div class="contact-val">Mon–Sat: 6 AM – 10 PM<br>Sunday: 7 AM – 12 PM</div>
+          </div>
+        </div>
+      </div>
+      <div class="inquiry-form">
+        <div class="form-title">Send an Enquiry</div>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full name" id="fname">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX" id="fphone">
+        </div>
+        <div class="form-group">
+          <label>Interested In</label>
+          <select id="fplan">
+            <option value="">Select a plan or program</option>
+            <option>Basic Membership – ₹999/month</option>
+            <option>Standard – ₹2,699 for 3 months</option>
+            <option>Premium – ₹4,999 for 6 months</option>
+            <option>Annual – ₹8,999/year</option>
+            <option>Personal Training – ₹3,999/month</option>
+            <option>Cardio Training – ₹999/month</option>
+            <option>Group Fitness – ₹1,799/month</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message (Optional)</label>
+          <textarea placeholder="Any questions or specific goals?" id="fmsg"></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Send Enquiry</button>
+        <div class="form-note">We typically respond within a few hours during working hours.</div>
+        <div class="form-success" id="formSuccess">✅ Thank you! We'll get back to you shortly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <a href="#hero" class="footer-logo">Iron<span>Pulse</span></a>
+    <div class="footer-copy">© 2026 IronPulse Fitness Studio, Garia, Kolkata</div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#membership">Membership</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919000012345?text=Hi%2C%20I%27m%20interested%20in%20joining%20IronPulse%20Fitness%20Studio!" class="whatsapp-float" target="_blank" rel="noopener" title="Chat on WhatsApp">
+  💬
+</a>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // Form submit (demo)
+  function submitForm() {
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    if (!name || !phone) {
+      alert('Please enter your name and phone number.');
+      return;
+    }
+    document.getElementById('formSuccess').style.display = 'block';
+    document.getElementById('fname').value = '';
+    document.getElementById('fphone').value = '';
+    document.getElementById('fplan').value = '';
+    document.getElementById('fmsg').value = '';
+  }
+</script>
+</body>
+</html>
